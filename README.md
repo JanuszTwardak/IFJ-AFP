@@ -24,6 +24,10 @@ Examples of different, independent registered events (projected from 2D to 1D pl
 
 
 ## Implementation
+Code was written to be run on Google Colab. Preprocessed data in form of NumPy Array needs to be loaded from Google Drive (you need to upload them earlier). 
+
+Notebook also has cells to load already trained model
+
 
 ## Results
 
