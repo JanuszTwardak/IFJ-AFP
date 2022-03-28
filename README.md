@@ -5,17 +5,25 @@
 ### Preface
 
 This project has been made during my 1-month internship in Institute of Nuclear Physics of the Polish Academmy of Sciences.
-It was mainly done to deepen and make use of my knowledge about machine learning and neural networks thus decision to represent hits as planes and to use autoencoders. In reality it isn't optimal solution because of some problems:
-* images representation is really sparse and it cannot include too much additional information about events,
-* we can't predefine what anomaly event is - we want determine it without human's bias. This results with:
-  * learning dataset containing anomalies, which conflicts with the whole idea of using autoencoders to anomaly detection,
+
+**Code works**, but I should mention that it was mainly done to deepen and make use of my knowledge about machine learning and neural networks (thus the decision to represent hits as images and to use autoencoders). In reality it's better to not use convolutional neural networks, as this leads to few problems:
+
+* event hits are represented as images:
+  * cannot include additional information about events,
+  * matrix is sparse (from 336x80 pixels only few aren't 0):
+    * harder for autoencoder to learn,
+    * unoptimal in terms of computing power and speed,
+* we can't predefine what anomaly event is - we want determine it without human's bias:
+  * learning dataset contains some anomalies, which conflicts with the whole idea of using autoencoders to anomaly detection,
   * we can't make automatic model validation, as it is needed to check every classified event by qualified physicist who will analyze results
 
-All of the above points make practical use of this code highly ineffective thus my decision to quit further development. Though I'm satisfied with internship and process of creating code as I have learned a lot, both about high energy physics and deep machine learning.
+All of the above points make practical use of this code pretty hard thus my decision to quit further development. Though I'm satisfied with internship and process of creating code as I have learned a lot.
 
-After internship I have been continuing this research project. In my other repository I am working on tackling this problem from different perspective by using Isolation Forest algorithm. It's aiming strictly to produce proper results, which differs it from this project.
+After internship I have been continuing this research project with different approach by using Extended Isolation Forest algorithm. It's aiming strictly to produce proper results, which differs it from this project.
 
 ### About AFP experiment (mild physics included)
+
+From CERN site:
 
 The ATLAS Forward Proton (AFP) project promises a significant extension to the physics reach of ATLAS by tagging and measuring the momentum and emission angle of very forward protons. This enables the observation and measurement of a range of processes where one or both protons remain intact which otherwise would be difficult or impossible to study. Such processes are typically associated with elastic and diffractive scattering, where the proton radiates a virtual colorless “object,” the so-called Pomeron, which is often thought of as a non-perturbative collection of soft gluons.
 
