@@ -1,9 +1,21 @@
-# AFP-anomaly-detection-conv-autoencoder-intern
+# AFP events anomaly detection using simple convolutional autoencoder
 
 ## INTRODUCTION
 
+### Preface
 
-### About AFP experiment
+This project has been made during my 1-month internship in Institute of Nuclear Physics of the Polish Academmy of Sciences.
+It was mainly done to deepen and make use of my knowledge about machine learning and neural networks thus decision to represent hits as planes and to use autoencoders. In reality it isn't optimal solution because of some problems:
+* images representation is really sparse and it cannot include too much additional information about events,
+* we can't predefine what anomaly event is - we want determine it without human's bias. This results with:
+  * learning dataset containing anomalies, which conflicts with the whole idea of using autoencoders to anomaly detection,
+  * we can't make automatic model validation, as it is needed to check every classified event by qualified physicist who will analyze results
+
+All of the above points make practical use of this code highly ineffective thus my decision to quit further development. Though I'm satisfied with internship and process of creating code as I have learned a lot, both about high energy physics and deep machine learning.
+
+After internship I have been continuing this research project. In my other repository I am working on tackling this problem from different perspective by using Isolation Forest algorithm. It's aiming strictly to produce proper results, which differs it from this project.
+
+### About AFP experiment (mild physics included)
 
 The ATLAS Forward Proton (AFP) project promises a significant extension to the physics reach of ATLAS by tagging and measuring the momentum and emission angle of very forward protons. This enables the observation and measurement of a range of processes where one or both protons remain intact which otherwise would be difficult or impossible to study. Such processes are typically associated with elastic and diffractive scattering, where the proton radiates a virtual colorless “object,” the so-called Pomeron, which is often thought of as a non-perturbative collection of soft gluons.
 
