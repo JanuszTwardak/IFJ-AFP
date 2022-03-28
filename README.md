@@ -10,7 +10,7 @@ It aims to classify anomalies in AFP events datasets. Single dataset entry conta
 
 Why is this important? Creating clear dataset of normal events would allow to use more machine learning and statistical techniques in CERN research. In addition to that, analyzing anomalies could also be interesting - because we do not openly define what anomaly is we might find some valuable information or relationships in this dataset too.
 
-### Problems with this approach
+### Problems with this approach (convolutional neural network)
 
 Code works, but I should mention that it was mainly done to make use of and to deepen my knowledge about machine learning and neural networks (thus the decision to represent hits as images and to use autoencoders). In reality it's better to not use convolutional neural networks, as this leads to few problems:
 
