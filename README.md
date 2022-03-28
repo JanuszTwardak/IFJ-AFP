@@ -44,15 +44,26 @@ Examples of different, independent registered events (projected from 2D to 1D pl
 
 
 ## Implementation
-Code was written to be run on Google Colab. Preprocessed data in form of NumPy Array needs to be loaded from Google Drive (you need to upload them earlier). 
 
-Notebook also has cells to load already trained model
+Single input dataset entry is 4x336x80 tensor, which is made by including all four planes from single detector (just as RGB image consists of 3 channels). In this form it is fed to neural network, which has been implemented using `keras` library. All layers use 'relu' as activation function and have `l2 kernel regularizer` (sum of the squared weights) with value set to 1e-4. 
 
+Network can be split into two parts: encoder (input layer: 4x336x80, output layer: 64x21x5) and decoder(input layer: 64x21x5, output layer: 4x336x80). As it can be easily seen, decoder's input is encoder's output.
+
+Firstly input image is heavily compressed in X and Y dimensions and balanced by increasing Z dimension (number of channels). Overall information hold by network decreases 14 times. It is achieved by implementing two MaxPooling layers, first one results with layer with shape 32x84x4, second one - with shape 64x21x5. Image is now properly decoded and we can begin with encoding process.
+
+Encoding starts with convolutional layer with the same dimensions as one before but a little bigger kernel size. Then by using two UpSampling layers we receive layers with shape 32x84x20 and 4x336x80, respectfully. By optimizing hyperparameters and manipulating with kernel sizes I have received output that was highly correlated with original image.
+
+In the end I compared original images to autoencoded ones by using simply square mean error. The closer the recreated image is compared to the original one the better. I also set an anomaly threshold as `mean(errors) + standard_deviation(errors)` which resulted with pretty satisfying classification.
+
+Simplified network visualization:
+
+<img width="600" alt="3" src="https://user-images.githubusercontent.com/50775382/160447037-c807c9dc-0940-4407-aeca-37258b6d194d.png"> 
 
 ## Results
 
 Each image below represents one event from single detector. Each image consists of two rows of images, each row contains four planes.
 First row represents original data from detector.
+
 Second row represents images compressed and reconstructed by our autoencoder. 
 After reconstruction it calculates difference from the original image (mean square error) and then compares it against threshold calculated statistically. If error is bigger than threshold, event is classified as anomaly.
 
